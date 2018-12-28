@@ -1,10 +1,17 @@
-from troposphere import Template, Join, GetAtt, Sub, AWS_STACK_NAME, Ref
+from troposphere import Template, Join, GetAtt, AWS_STACK_NAME, Ref, Parameter, constants
 from troposphere.awslambda import Function, Code, Permission, Environment
 from troposphere.events import Target, Rule
 from troposphere.iam import Role, Policy
 from troposphere.s3 import Bucket, LifecycleConfiguration, LifecycleRule
 
 template = Template(Description='Lambda that described all certificates based on events')
+
+# Parameters
+event_cron = template.add_parameter(Parameter(
+    "EventScheduleCron",
+    Type=constants.STRING,
+    Default="rate(1 day)",
+))
 
 # S3
 bucket = template.add_resource(Bucket(
@@ -87,7 +94,7 @@ check_function_target = Target(
 
 trigger_rule = template.add_resource(Rule(
     "CheckTriggerLambdaRule",
-    ScheduleExpression=Sub("rate(1 day)"),
+    ScheduleExpression=Ref(event_cron),
     Description="Trigger lambda to describe ACM Certificates",
     State="ENABLED",
     Targets=[
