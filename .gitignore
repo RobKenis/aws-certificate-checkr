@@ -1,4 +1,18 @@
+# IntelliJ
 .idea/
+
+# Python
 venv/
+
+# Troposphere
 output/
 !output/.placeholder
+
+# Log files
+app/npm-debug.log*
+app/yarn-debug.log*
+app/yarn-error.log*
+
+# Vue
+node_modules
+/dist
