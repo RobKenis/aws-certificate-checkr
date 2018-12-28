@@ -7,7 +7,7 @@ import boto3
 regions = boto3.client('ec2').describe_regions()
 s3 = boto3.client('s3')
 
-bucket = os.environ('s3Bucket')
+bucket = os.environ['s3Bucket']
 
 
 def handler(event, context):
