@@ -1,6 +1,13 @@
+import json
+import os
+from datetime import datetime
+
 import boto3
 
 regions = boto3.client('ec2').describe_regions()
+s3 = boto3.client('s3')
+
+bucket = os.environ('s3Bucket')
 
 
 def handler(event, context):
@@ -20,9 +27,17 @@ def check_certificates(region):
 
 
 def upload_to_s3(region, certificates):
-    print('----------------------------------------------------')
-    print(region)
-    print(certificates)
+    s3.put_object(
+        ACL='bucket-owner-full-control',
+        Body=(bytes(json.dumps(certificates, indent=2).encode('UTF-8'))),
+        Bucket=bucket,
+        Key=_result_key(region),
+        StorageClass='ONEZONE_IA',
+    )
+    print("Results for {region} stored in {bucket} at {path}".format(region=region, bucket=bucket,
+                                                                     path=_result_key(region)))
 
 
-handler(None, None)
+def _result_key(region):
+    return "results/{year}/{month}/{day}/{region}.json".format(
+        year=datetime.now().year, month=datetime.now().month, day=datetime.now().day, region=region)
