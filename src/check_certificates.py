@@ -16,7 +16,7 @@ def handler(event, context):
 
 
 def check_certificates(region):
-    client = boto3.client('acm')
+    client = boto3.client('acm', region_name=region)
     certificates = list(map(lambda described: {'CertificateArn': described['Certificate']['CertificateArn'],
                                                'DomainName': described['Certificate']['DomainName'],
                                                'InUseBy': described['Certificate']['InUseBy'],
