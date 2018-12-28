@@ -110,5 +110,5 @@ template.add_resource(Permission(
     SourceArn=GetAtt(trigger_rule, "Arn")
 ))
 
-f = open("output/certificate_checkr.json", "a")
+f = open("output/certificate_checkr.json", "w")
 f.write(template.to_json())
