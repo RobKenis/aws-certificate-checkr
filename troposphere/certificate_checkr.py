@@ -52,7 +52,7 @@ lambda_execution_role = template.add_resource(Role(
                 ],
             }, {
                 "Effect": "Allow",
-                "Action": ["ec2:ListRegions"],
+                "Action": ["ec2:DescribeRegions"],
                 "Resource": '*',
             }],
         })],
@@ -83,6 +83,7 @@ with open("src/check_certificates.py", 'r') as input_file:
                 "s3Bucket": Ref(bucket),
             },
         ),
+        Timeout=60,
     ))
 
 # Cloudwatch
