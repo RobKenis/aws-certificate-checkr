@@ -36,7 +36,7 @@ lambda_execution_role = template.add_resource(Role(
         PolicyDocument={
             "Version": "2012-10-17",
             "Statement": [{
-                "Action": ["logs:*"],
+                "Action": ["logs:CreateLogStream", "logs:PutLogEvents"],
                 "Resource": "arn:aws:logs:*:*:*",
                 "Effect": "Allow",
             }, {
