@@ -1,6 +1,5 @@
 {
   "rules": {
-    "no-console": "off",
-    "no-restricted-syntax": []
+    "no-console": "off"
   }
 }
