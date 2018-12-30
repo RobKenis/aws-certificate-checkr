@@ -16,7 +16,7 @@
             'b-button': bButton
         },
         methods: {
-            loadRegion: function () {
+            loadRegion: function() {
                 console.log("Requesting info for [" + this.name + "]");
             }
         }
