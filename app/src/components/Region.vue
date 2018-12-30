@@ -1,7 +1,13 @@
 <template>
-    <div>
-        <b-button v-on:click="loadRegion" class="region-button" variant="primary">{{name}}</b-button>
-    </div>
+  <div>
+    <BButton
+      class="region-button"
+      variant="primary"
+      @click="loadRegion"
+    >
+      {{ name }}
+    </BButton>
+  </div>
 </template>
 
 <script>
@@ -9,11 +15,14 @@
 
     export default {
         name: 'Region',
-        props: {
-            name: String,
-        },
         components: {
-            'b-button': bButton
+            'BButton': bButton
+        },
+        props: {
+            name: {
+                type: String,
+                required: true
+            }
         },
         methods: {
             loadRegion: function() {

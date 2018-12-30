@@ -1,14 +1,14 @@
 <template>
-    <div id="app">
-        <Regions></Regions>
-    </div>
+  <div id="app">
+    <Regions />
+  </div>
 </template>
 
 <script>
     import Regions from './components/Regions.vue'
 
     export default {
-        name: 'app',
+        name: 'App',
         components: {
             Regions
         }
