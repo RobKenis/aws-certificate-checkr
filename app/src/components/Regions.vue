@@ -1,13 +1,15 @@
 <template>
   <div class="regions">
     <h1>Regions</h1>
-    <div class="regions-list">
-      <Region
-        v-for="region in regions"
-        :key="region"
-        :name="region"
-      />
-    </div>
+    <ul class="regions-list">
+      <li>
+        <Region
+          v-for="region in regions"
+          :key="region"
+          :name="region"
+        />
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -27,6 +29,11 @@
 
 <style scoped>
     .regions-list {
-        display: inline;
+        width: 40%;
+        margin-left: 30%;
+    }
+
+    ul {
+        list-style-type: none;
     }
 </style>
