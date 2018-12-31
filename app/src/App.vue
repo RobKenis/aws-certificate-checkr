@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <Regions />
-    <CertificatesTable />
+    <Certificates />
   </div>
 </template>
 
 <script>
     import Regions from './components/Regions.vue'
-    import CertificatesTable from "./components/CertificatesTable";
+    import Certificates from "./components/Certificates";
 
     export default {
         name: 'App',
         components: {
-          CertificatesTable,
+            Certificates,
             Regions
         }
     }
