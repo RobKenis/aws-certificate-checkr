@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <BContainer fluid>
     <BFormGroup
       horizontal
       label="Filter"
@@ -26,7 +26,7 @@
       :fields="fields"
       :filter="filter"
     />
-  </div>
+  </BContainer>
 </template>
 
 <script>
@@ -36,6 +36,7 @@
   import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group';
   import bInputGroupAppend from 'bootstrap-vue/es/components/input-group/input-group-append';
   import bButton from 'bootstrap-vue/es/components/button/button';
+  import bContainer from 'bootstrap-vue/es/components/layout/container'
 
   export default {
         name: 'CertificatesTable',
@@ -45,7 +46,8 @@
             'BInputGroup': bInputGroup,
             'BFormInput': bFormInput,
             'BInputGroupAppend': bInputGroupAppend,
-            'BButton': bButton
+            'BButton': bButton,
+            'BContainer': bContainer,
         },
         props: {
             certificates: {
