@@ -10,6 +10,7 @@
 
 <script>
     import bButton from 'bootstrap-vue/es/components/button/button'
+    import { EventBus } from './event-bus.js';
 
     export default {
         name: 'Region',
@@ -24,7 +25,7 @@
         },
         methods: {
             loadRegion: function () {
-                console.log("Requesting info for [" + this.name + "]");
+                EventBus.$emit('region-clicked', {region: this.name});
             }
         }
     }
