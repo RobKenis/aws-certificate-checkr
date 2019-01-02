@@ -39,7 +39,27 @@
           icon="times"
         />
       </template>
+      <template
+        slot="InUseBy"
+        slot-scope="data"
+      >
+        <BButton
+          v-b-modal="'CertificateUsageDetails'"
+          @click="showDetails(data.value)"
+        >
+          {{ data.value.length }} usages
+        </BButton>
+      </template>
     </BTable>
+    <BModal
+      id="CertificateUsageDetails"
+      size="lg"
+      title="Certificate Details"
+      ok-only
+      centered
+    >
+      <CertificateUsageDetails :certificate-usages="selectedUsages" />
+    </BModal>
   </BContainer>
 </template>
 
@@ -50,11 +70,14 @@
   import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group';
   import bInputGroupAppend from 'bootstrap-vue/es/components/input-group/input-group-append';
   import bButton from 'bootstrap-vue/es/components/button/button';
-  import bContainer from 'bootstrap-vue/es/components/layout/container'
+  import bContainer from 'bootstrap-vue/es/components/layout/container';
+  import bModal from 'bootstrap-vue/es/components/modal/modal';
+  import CertificateUsageDetails from "./CertificateUsageDetails";
 
   export default {
         name: 'CertificatesTable',
         components: {
+          CertificateUsageDetails,
             'BTable': bTable,
             'BFormGroup': bFormGroup,
             'BInputGroup': bInputGroup,
@@ -62,6 +85,7 @@
             'BInputGroupAppend': bInputGroupAppend,
             'BButton': bButton,
             'BContainer': bContainer,
+            'BModal': bModal,
         },
         props: {
             certificates: {
@@ -78,7 +102,14 @@
                     {key: 'CertificateArn', label: 'Certificate ARN', sortable: true},
                     {key: 'DomainName', label: 'Domain Name', sortable: true},
                     {key: 'InUse', label: 'In Use ?', sortable: true},
-                ]
+                    {key: 'InUseBy', label: 'In Use By'},
+                ],
+                selectedUsages: [],
+            }
+        },
+        methods: {
+            showDetails: function(usages){
+                this.selectedUsages = usages;
             }
         }
     }
