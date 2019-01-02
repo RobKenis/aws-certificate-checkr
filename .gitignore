@@ -16,3 +16,4 @@ app/yarn-error.log*
 # Vue
 node_modules
 app/dist
+/app/.env.local

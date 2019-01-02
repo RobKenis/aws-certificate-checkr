@@ -25,7 +25,21 @@
       :items="certificates"
       :fields="fields"
       :filter="filter"
-    />
+    >
+      <template
+        slot="InUse"
+        slot-scope="data"
+      >
+        <FontAwesomeIcon
+          v-if="data.value"
+          icon="check"
+        />
+        <FontAwesomeIcon
+          v-else
+          icon="times"
+        />
+      </template>
+    </BTable>
   </BContainer>
 </template>
 
@@ -64,7 +78,6 @@
                     {key: 'CertificateArn', label: 'Certificate ARN', sortable: true},
                     {key: 'DomainName', label: 'Domain Name', sortable: true},
                     {key: 'InUse', label: 'In Use ?', sortable: true},
-                    {key: 'InUseBy', label: 'In Use By', sortable: false}
                 ]
             }
         }

@@ -23,7 +23,11 @@
             getCertificates: function (e) {
                 console.log("Fetching results for [" + e.region + "]");
                 axios
-                    .get('https://s3-eu-west-1.amazonaws.com/rob-k-public-s3/certificates.json')
+                    .get('https://s3-'
+                            + process.env.VUE_APP_CERTIFICATES_S3_BUCKET_REGION
+                            + '.amazonaws.com/'
+                            + process.env.VUE_APP_CERTIFICATES_S3_BUCKET_REGION
+                            + '/results/latest/' + e.region + '.json')
                     .then(response => response.data).then(certs => this.certificates = certs)
             }
         }

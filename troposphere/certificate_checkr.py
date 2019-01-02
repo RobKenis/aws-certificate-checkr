@@ -45,7 +45,7 @@ lambda_execution_role = template.add_resource(Role(
                 "Resource": '*',
             }, {
                 "Effect": "Allow",
-                "Action": ["s3:PutObject"],
+                "Action": ["s3:PutObject", "s3:PutObjectAcl"],
                 "Resource": [
                     Join("", ["arn:aws:s3:::", Ref(bucket)]),
                     Join("", ["arn:aws:s3:::", Ref(bucket), "/results/*"]),
