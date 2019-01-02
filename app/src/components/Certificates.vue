@@ -26,7 +26,7 @@
                     .get('https://s3-'
                             + process.env.VUE_APP_CERTIFICATES_S3_BUCKET_REGION
                             + '.amazonaws.com/'
-                            + process.env.VUE_APP_CERTIFICATES_S3_BUCKET_REGION
+                            + process.env.VUE_APP_CERTIFICATES_S3_BUCKET
                             + '/results/latest/' + e.region + '.json')
                     .then(response => response.data).then(certs => this.certificates = certs)
             }
